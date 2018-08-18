@@ -156,7 +156,9 @@ RCT_EXPORT_METHOD(canGoNext: (RCTPromiseResolveBlock) resolve rejecter: (RCTProm
 
 RCT_EXPORT_METHOD(goNext) {
   RCTLogInfo(@"KeyboardManager.goNext");
-  [[IQKeyboardManager sharedManager] goNext];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [[IQKeyboardManager sharedManager] goNext];
+  });
 }
 
 RCT_EXPORT_METHOD(canGoPrevious: (RCTPromiseResolveBlock) resolve rejecter: (RCTPromiseRejectBlock) reject) {
@@ -167,7 +169,9 @@ RCT_EXPORT_METHOD(canGoPrevious: (RCTPromiseResolveBlock) resolve rejecter: (RCT
 
 RCT_EXPORT_METHOD(goPrevious) {
   RCTLogInfo(@"KeyboardManager.goPrevious");
-  [[IQKeyboardManager sharedManager] goPrevious];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [[IQKeyboardManager sharedManager] goPrevious];
+  });
 }
 
 @end
