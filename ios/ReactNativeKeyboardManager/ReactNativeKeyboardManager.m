@@ -146,4 +146,28 @@ RCT_EXPORT_METHOD(isKeyboardShowing: (RCTPromiseResolveBlock) resolve rejecter: 
   resolve([NSString stringWithFormat:@"%d", isKeyboardShowing]);
 }
 
+// next/prev handling
+
+RCT_EXPORT_METHOD(canGoNext: (RCTPromiseResolveBlock) resolve rejecter: (RCTPromiseRejectBlock) reject) {
+  BOOL canGoNext = [IQKeyboardManager sharedManager].canGoNext;
+  RCTLogInfo(@"KeyboardManager.canGoNext: %d", canGoNext);
+  resolve([NSString stringWithFormat:@"%d", canGoNext]);
+}
+
+RCT_EXPORT_METHOD(goNext) {
+  RCTLogInfo(@"KeyboardManager.goNext");
+  [[IQKeyboardManager sharedManager] goNext];
+}
+
+RCT_EXPORT_METHOD(canGoPrevious: (RCTPromiseResolveBlock) resolve rejecter: (RCTPromiseRejectBlock) reject) {
+  BOOL canGoPrevious = [IQKeyboardManager sharedManager].canGoPrevious;
+  RCTLogInfo(@"KeyboardManager.canGoPrevious: %d", canGoPrevious);
+  resolve([NSString stringWithFormat:@"%d", canGoPrevious]);
+}
+
+RCT_EXPORT_METHOD(goPrevious) {
+  RCTLogInfo(@"KeyboardManager.goPrevious");
+  [[IQKeyboardManager sharedManager] goPrevious];
+}
+
 @end
